@@ -9,69 +9,66 @@ namespace Assignment3
     {
         static void Main(string[] args)
         {
+            //create 10 so's with varrying priorities.
+            SO so1 = new SO(1, 1);
+            SO so2 = new SO(2, 5);
+            SO so3 = new SO(3, 3);
+            //SO so4 = new SO(4, 3);
+            //SO so5 = new SO(5, 5);
+            //SO so6 = new SO(6, 2);
+            //SO so7 = new SO(7, 1);
+            //SO so8 = new SO(8, 5);
+            //SO so9 = new SO(9, 1);
+            //SO so10 = new SO(10, 0);
 
+            CircularLinkedList<SO> priorityList = new CircularLinkedList<SO>();
 
+            //enqueue the objects
+            priorityList.Enqueue(so1);
+            priorityList.Enqueue(so2);
+            priorityList.Enqueue(so3);
+            //priorityList.Enqueue(so4);
+            //priorityList.Enqueue(so5);
+            //priorityList.Enqueue(so6);
+            //priorityList.Enqueue(so7);
+            //priorityList.Enqueue(so8);
+            //priorityList.Enqueue(so9);
+            //priorityList.Enqueue(so10);
 
-            CircularArray<SO> priorityArray = new CircularArray<SO>(5);
+            priorityList.Dequeue();
+            priorityList.Dequeue();
 
-            for(int i = 0;i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 SO tempso = new SO(SriRandom.GetRandom());  //returns a random ulong by my modifications
-                priorityArray.addToQueue(tempso);
-            }
-            for(int i = 0; i < 50; i++)
-            {
-                priorityArray.removeFront();
-            }for(int i = 0;i < 100; i++)
-            {
-                SO tempso = new SO(SriRandom.GetRandom());  //returns a random ulong by my modifications
-                priorityArray.addToQueue(tempso);
-            }
-            for(int i = 0; i < 50; i++)
-            {
-                priorityArray.removeFront();
-            }for(int i = 0;i < 100; i++)
-            {
-                SO tempso = new SO(SriRandom.GetRandom());  //returns a random ulong by my modifications
-                priorityArray.addToQueue(tempso);
-            }
-            for(int i = 0; i < 50; i++)
-            {
-                priorityArray.removeFront();
-            }for(int i = 0;i < 100; i++)
-            {
-                SO tempso = new SO(SriRandom.GetRandom());  //returns a random ulong by my modifications
-                priorityArray.addToQueue(tempso);
-            }
-            for(int i = 0; i < 50; i++)
-            {
-                priorityArray.removeFront();
-            }for(int i = 0;i < 100; i++)
-            {
-                SO tempso = new SO(SriRandom.GetRandom());  //returns a random ulong by my modifications
-                priorityArray.addToQueue(tempso);
-            }
-            for(int i = 0; i < 50; i++)
-            {
-                priorityArray.removeFront();
-            }for(int i = 0;i < 100; i++)
-            {
-                SO tempso = new SO(SriRandom.GetRandom());  //returns a random ulong by my modifications
-                priorityArray.addToQueue(tempso);
-            }
-            for(int i = 0; i < 50; i++)
-            {
-                priorityArray.removeFront();
+                priorityList.Enqueue(tempso);
             }
 
-            priorityArray.PrintAll();
+            priorityList.printAll();
+
+            for (int i = 0; i < 5; i++)
+            {
+                priorityList.Dequeue();
+            }
+
+            priorityList.printAll();
+            //CircularLinkedList<SO> priorityList = new CircularLinkedList<SO>();
+
+            //for(int i = 0;i < 1500; i++)
+            //{
+            //    SO tempso = new SO(SriRandom.GetRandom());  //returns a random ulong by my modifications
+            //    priorityList.Enqueue(tempso);
+            //}
+            //for (int i = 0; i < 75; i++)
+            //{
+            //    priorityList.Dequeue();
+            //}
 
 
+            //priorityList.printAll();
 
-
-
-
-
+            //priorityList.DeleteAll();
+            //priorityList.printAll();
 
 
             //CircularArray < SO> priorityArray = new CircularArray<SO>();

@@ -4,6 +4,20 @@ using System.Text;
 
 namespace Assignment3
 {
+    /// <summary>
+    /// simple object, used for testing datastructures. 
+    /// 
+    /// ID, just a number for it to be known as
+    /// Data, just filler
+    /// sizeOfObject, the amount of doubles to be used as filler
+    /// priority, used for the priority queues
+    /// 
+    /// Constructors:
+    /// one with a random generated priority
+    /// another with an inputted priority
+    /// 
+    /// is comparable
+    /// </summary>
     public class SO : IComparable
     {
         public ulong ID;

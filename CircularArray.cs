@@ -59,6 +59,20 @@ namespace Assignment3
 
         /// <summary>
         /// adds to queue according to priority
+        /// 
+        /// Steps to this method are as follows:
+        /// 1. check if the array is large enough to take the item, if not, pass off to the grow method.
+        /// 2. declare a position holder, j, which will end up being the index that the new item gets inserted into.
+        /// 3. check if the array is empty. if so, put the item at the front of the array, which will also be the back, skip to 6.
+        /// 4. the array is not empty, and has atleast one space. place j at the rear of the queue, declare a sentinal bool.
+        /// 5. start a while loop. this loop is designed to step through the array from back to front, and insert the item on basis of priority.
+        ///     if j < 0, loop around the circle
+        ///     if priority of current object is >= the object to be inserted, the new object will be inserted behind current.
+        ///     if j == quefront, we have traversed the entire array and no object with a higher/equal priority is found, this object belongs at the front
+        /// 6. start a for loop, this loop moves everything over one step as to fit the new object.
+        /// 7. assign the position to its rightful location
+        /// 8. if queue rear ends up == array.length, wrap it around to the 'front'
+        /// 
         /// O(N) where N is the distance we need to search for the position
         /// worst case, 2N where N is the array.Length
         /// best case O(1)
@@ -85,15 +99,22 @@ namespace Assignment3
                     while (!posFound)
                     {
                         j--;
-                        if(j < 0)   //all items in array are lower priority. this goes first so that there isnt an array index exception
+                        if(j < 0)   //this sends j to the 'end' of the array
                         {
-                            posFound = true;
-                            j = queueFront;
+                            j = array.Length-1;
                         }
                         else if (array[j] == null|| array[j].priority >= anObject.priority)  //if the object to be inserted has a higher priority than the one in the search. or if the spot is empty(just to stop stuff from breaking).
                         {
                             posFound = true;
                             j++; //step back one
+                            if (j == array.Length)  //send j to the 'front of the array'
+                            {
+                                j = 0;
+                            }
+                        }
+                        if(j == queueFront) //if we end up traversing the entire array and no object with a higher/equal priority is found, this object belongs at the front
+                        {
+                            posFound = true;
                         }
                     }
 
@@ -111,8 +132,6 @@ namespace Assignment3
                     array[j] = anObject;    //assign the position
                 }
                 
-                
-
                 Console.WriteLine("{0} was added to position {1}", anObject, j);
                 count++;
                 queueRear++;
@@ -131,7 +150,7 @@ namespace Assignment3
         /// <returns>the item in which it is deleteing</returns>
         public SO removeFront()  
         {
-            if (count == 0)
+            if (count == 0) //control to stop an empty array from being deleted
             {
                 Console.WriteLine("Why the heck would you try to delete something from an empty array.");
                 return default;
