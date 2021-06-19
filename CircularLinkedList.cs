@@ -5,6 +5,10 @@ using System.Text;
 namespace Assignment3
 {
 
+    /// <summary>
+    /// circular linked list based on priority
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class CircularLinkedList<T>
     {
         internal class Node
@@ -14,14 +18,31 @@ namespace Assignment3
             internal SO data;
         }
 
-        private int count = 0;
+        public int count = 0;
         private Node front;
         private Node back;
 
         public CircularLinkedList() // constructor
         { front = back = null; }
 
-
+        /// <summary>
+        /// adds an item according to its priority to the list.
+        /// 
+        /// bestcase: O(1)
+        /// Worstcase: O(N) where N is the number of items in the list -1
+        /// 
+        /// 1. check if the lsit is empty, if so, add the item there.
+        /// it is now the front and the back. the next item is itself, and the previous is also itself
+        /// 2. these two else ifs are to save some easy time. 
+        /// they trigger either if the item at start of the list has a lower priority than it,
+        /// or if the back has an equal or greater priority.
+        /// the former will add the item to the front, and the latter adds it to the back.
+        /// both save time by not having to search all the way for no reason, as well as cut down on errors.
+        /// 3. else, search through the linked list until you find an item with an equal or greater priority.
+        /// insert the item just before it.
+        /// 4. increase the count
+        /// </summary>
+        /// <param name="input"></param>
         public void Enqueue(SO input)
         {
             if (front == null)  //list is empty
@@ -45,7 +66,6 @@ namespace Assignment3
 
                 front = newFront;
             }
-
             else if (back.data.priority >= input.priority)   //easy code to cut down on time. if the back of the queue has a higher priority than the input, put this at the back.
             {
                 Node oldBack = back;
@@ -101,7 +121,7 @@ namespace Assignment3
         {
             if (front == null)
             {
-                Console.WriteLine("This list has no nodes to delete...");
+                //Console.WriteLine("This list has no nodes to delete...");
                 return default;
             }
             else if (back == front)//last item on list
@@ -139,6 +159,10 @@ namespace Assignment3
             }
         }
 
+        /// <summary>
+        /// PrintAll, cycles through the list and prints each item in a nice fashion, including its positions
+        /// will print a warning string if the list is empty
+        /// </summary>
         public void printAll()
         {
             Node current = front;
@@ -159,8 +183,11 @@ namespace Assignment3
             }
         }
 
-        //O(1)
-        //deletes all items in the list
+        /// <summary>
+        /// Deletes all items in the list
+        /// 
+        /// o(1)
+        /// </summary>
         public void DeleteAll()
         {
             //clear the front and back. zero the count. The rest of the nodes are cut off and left to the garbage collector to deal with
