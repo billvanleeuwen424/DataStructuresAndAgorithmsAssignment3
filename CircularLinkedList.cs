@@ -7,6 +7,8 @@ namespace Assignment3
 
     /// <summary>
     /// circular linked list based on priority
+    /// 
+    /// made the datatype SO in order to use priority.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     class CircularLinkedList<T>
