@@ -46,7 +46,7 @@ namespace Assignment3
                 if (i == 10) //if we have tried 10 times, just cut it.
                 {
                     spot = -1;
-                    break;  //spot not found
+                    spotfound=true;  //but spot not found
                 }
             }
 
@@ -91,7 +91,7 @@ namespace Assignment3
                 if (i == 10) //if we have tried 10 times, just cut it.
                 {
                     spot = -1;
-                    break;  //spot not found
+                    itemfound=true;  //but spot not found
                 }
             }
 
