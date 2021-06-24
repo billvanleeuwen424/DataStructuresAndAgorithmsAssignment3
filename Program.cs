@@ -112,7 +112,7 @@ namespace Assignment3
             string[] demostrings = { "Srivastava", "Hurley", "Mitchell", "McConnell", "Feng", "Noorian", "Young",
                 "Smith", "Northrop", "Andreau", "Reid", "Alam", "Addas", "Atkinson", "Hickson", "Aniag", "Patrick",
                 "Subramanian", "Pollanen", "Bruder", "Beland", "Akaiso", "Hircock", "Erzurumluoglu", "Neels"};
-            Console.WriteLine("Hashmap Testing");
+            Console.WriteLine("Hashmap Testing\n");
             int size = 100;
             HashTable<string> myhashtable = new HashTable<string>(size);
 
@@ -121,10 +121,10 @@ namespace Assignment3
                 myhashtable.Add(i);
             }
 
-            //find items, print their index
-            foreach(string i in demostrings)
+
+            foreach(string i in myhashtable)
             {
-                Console.WriteLine("{0} at spot {1}",i, myhashtable.find(i));
+                Console.WriteLine("{0}",i);
             }
 
             Console.WriteLine("My name is: William Van Leeuwen");// (please put your name in this statement)

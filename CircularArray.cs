@@ -31,31 +31,6 @@ namespace Assignment3
             count = 0;
         }
 
-
-        /// <summary>
-        /// adds to the back of the queue, no matter the objects priority
-        /// </summary>
-        /// <param name="value"></param>
-        public void addBack(SO value)  //addBack is enqueue
-        {
-            if (count == array.Length)   //array is full, grow it
-            {
-                Grow(array.Length * 2);
-            }
-            else    //there is at least one open position in the array
-            {
-
-                array[queueRear] = value;
-                count++;
-                queueRear++;
-
-                if (queueRear % array.Length == 0 && queueRear != 0)    //wrap array to front if its at the end
-                {
-                    queueRear = 0;
-                }
-            }
-        }
-
         /// <summary>
         /// adds to queue according to priority
         /// 
@@ -166,21 +141,10 @@ namespace Assignment3
             }
         }
 
-        // Just returns the front element O(1)
-        public SO GetFront()
-        {
-            if (count == 0)
-            {
-                Console.WriteLine("theres nothing to get from an empty array.");
-                return default;
-            }
-            else
-            {
-                return array[queueFront];
-            }
-
-        }
-        // Same old Grow, bit hard to know where to use it if at all though...
+        /// <summary>
+        /// grows the array by the inputted size
+        /// </summary>
+        /// <param name="newsize"></param>
         // O(N)
         public void Grow(int newsize)
         {

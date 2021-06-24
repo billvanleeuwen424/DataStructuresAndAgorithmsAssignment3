@@ -9,7 +9,7 @@ namespace Assignment3
     /// a hash table for generics
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class HashTable<T>
+    class HashTable<T> : IEnumerable
     {
         private T[] hasharray;
 
@@ -71,7 +71,7 @@ namespace Assignment3
         /// </summary>
         /// <param name="value"></param>
         /// <returns>-1 if not found.</returns>
-        public int find(T value)
+        private int find(T value)
         {
             int hashedvalue = hashkey(value); //send the value to the hasher to be hashed
 
@@ -132,6 +132,19 @@ namespace Assignment3
         private int positionFunction(int hashvalue,int i)
         {
             return (hashvalue * (i * i) % hasharray.Length);
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < hasharray.Length; i++)
+            {
+                if(hasharray[i] != null)
+                    yield return hasharray[i];
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }
